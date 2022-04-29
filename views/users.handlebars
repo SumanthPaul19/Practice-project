@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Hands-on</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+</head>
+
+<body>
+    {{!-- {{{paginateHelper pagination limit="7"}}} --}}
+    <div class="container">
+        
+        <table class="table table-bordered border border border-dark  mt-5">
+            <thead class=" text-white" style="background-color: #1f3896;">
+                <th>Name</th>
+                <th>Id</th>
+                <th>Employee Salary</th>
+                <th>Age</th>
+            </thead>
+            {{#each pagination.emps}}
+            <tr>
+                <td>{{employee_name}}</td>
+                <td>{{id}}</td> 
+                <td>{{employee_salary}}</td>
+                <td>{{employee_age}}</td>
+            </tr>
+            {{/each}}
+        </table>
+
+
+        <div class="float-end">
+                <div class="float-end btn-group border-dark">
+                    {{#paginate pagination type="previous"}}
+                    <li class="btn btn-outline-success  border-dark rounded-0" {{#if active}} class="active"{{/if}}>
+                        <a style="text-decoration:none;font-weight:500; color:rgb(18, 55, 134);" href="?p={{n}}">Prev</a>
+                    </li>
+                    {{/paginate}}
+
+                    {{#paginate pagination}}
+                    <li class="btn btn-outline-warning  border-dark " {{#if active}} class="active"{{/if}}>
+                        <a style="text-decoration:none; font-weight:500;color:rgb(18, 55, 134);" href="?p={{n}}">{{n}}</a>
+                    </li>
+                    {{/paginate}}
+
+                    {{#paginate pagination type="next"}}
+                    <li class="btn btn-outline-success  border-dark  rounded-0" {{#if active}} class="active"{{/if}}>
+                        <a style="text-decoration:none;font-weight:500; color:rgb(18, 55, 134);" href="?p={{n}}">Next</a>
+                    </li>
+                    {{/paginate}}
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
